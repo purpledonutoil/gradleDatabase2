@@ -17,18 +17,6 @@ public class Database {
         return INSTANCE;
     }
 
-    public int executeUpdates(String sql) {
-        if (connection == null) {
-            throw new IllegalStateException("Database connection is not initialized");
-        }
-        try (Statement st = connection.createStatement()) {
-            return st.executeUpdate(sql);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return -1;
-        }
-    }
-
     public Connection getConnection() {
         try {
             if (connection == null || connection.isClosed()) {
